@@ -34,6 +34,9 @@ class AITrap1dApp(App):
     def on_input_submit(self,event):
         self.value=event.value.strip().lower()
         value_list=self.value.split("",1)
+        command = value_list[0]
+        argument = value_list[1] if len(value_list) > 1 else None
+
         command  =value_list[0]
         argument =value_list[1] if len(value_list) > 1 else None
         # i wanna to make it for the normal game but the terminal part is easy and so i did this but i will try to make other version of it not of terminal
@@ -80,3 +83,80 @@ class AITrap1dApp(App):
         elif self.value=="ls" and self.c_level==2:
             terminal.write(f"> {self.value}")
             terminal.write("files:\nusers\nlogs\nsystem\n.secret \n")
+
+        elif command =="open" and self.c_level==2:
+            if argument is None:
+                terminal.write(f"> {self.value}")  
+                terminal.write("you must tell a file \n") 
+            elif argument=="users":
+                terminal.write(f">{self.value}")
+                terminal.write("===USERS ===\nroot\ndev\nguest \n\nNote"\nroot is the main acc.\n" )
+                self.f_opened+=1
+            elif argument=="logs":
+                terminal.write(f"> {self.value}")
+                terminal.write("USER: ROOT\nNlAST LOGIB: failed\ninfo change in 1998 \n")
+                self.f_opened+=1
+            elif argument=="system":
+                terminal.write(f">{self.value}")
+                terminal.write('===SYS.CONFIG===\nEncryption:ENABLE\nsecurity layer:MAYBE ACTIVE\n...\n"patterns everywhere,Look before actin up"\n')
+
+            #8 24
+            # 
+            elif argument==".secret":
+                terminal.write(f">{self.value}")  
+                terminal.write("dont trust evrything you see:{ \nKey fragment:DOG \n") 
+                self.f_opened+=1
+            else:
+                terminal.write(f"> {self.value}")
+                terminal.write("not found the file \n")
+        elif command=="connect" and self.c_level==2 and self.f_opened< 3 :
+            terminal.write(f"> {self.value}")
+            terminal.write("you need to find the pass \n")
+        elif command=="connect" and len(value_list) < 2 and self.c_level==2:
+             terminal.write(f">{self.value}")
+             terminal.write("error:you must write a pass \n")
+        
+        elif command =="connect" and self.c_level==2:
+            if value_list[1] in ["root1998","root 1998"]:
+                terminal.write("[[ACCESS OF LEVEL 2 GRANTED]]")
+                terminal.write("logical thinking confirm!\n\n[ Warning:bobaball active]\n(Q1) solve thepattern:\n\n2- 4\n3-> 4\n3-9\n4-16\n 5 -? \n")
+                self.c_level=3
+            else:
+                 terminal.write(f">{self.value}")
+                 terminal.write( "wrong pass\n access deny \n")
+        elif self.value==="hint" and self.c_level==2:
+            if self.h_used==0:
+                 terminal.write(f">{self.value} 1")
+                 terminal.write("[AIRL]: FOCUS ON ROOT ACC. \n something important happened in a specific year \n")
+                 self.h_used=1
+            elif self.h_used==1:
+                 terminal.write(f">{self.value} 2")
+                 terminal.write("[AIRL]: use connect command\n think:username+year \n")
+                 self.h_used=2
+            elif self.h_used== 2:
+                 terminal.write(f">{self.value} 3")
+                 terminal.write("[AIRL]:IT CONNECTS TO  root AND THE YEAR")
+                 self.h_used=3
+            elif self.h_used== 3:
+                 terminal.write(f">{self.value} ")
+                 terminal.write("[AIRL]:SHAME ON YOU NO MOR HINTS \n")
+
+            
+
+             
+
+           
+
+
+            
+                               
+                
+
+
+
+
+
+    
+
+        
+                      

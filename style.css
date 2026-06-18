@@ -1,4 +1,4 @@
-sScreen {background:#000a1a; color:#00cfff; border:round #0044aa; padding:1 2; } #history{ 
+Screen {background:#000a1a; color:#00cfff; border:round #0044aa; padding:1 2; } #history{ 
     background: transparent; scrollbar-color:#0055cc #000a1a; border:none; height:1fr;}#input{
         height:3; background: #000f22;  border-top:solid #0035aa; }#prompt{width:2; color:#3299ff;
         } 

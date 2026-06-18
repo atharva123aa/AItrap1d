@@ -1,7 +1,9 @@
-screen{bg:#000a1a; color:#00cfff; border:round #0044aa; padding:1 2
-    ;} #history{color:#00cfff; background: transparent; scrollbar-color:#0055cc #000a1a;}#input{
-        height:1.1; background: #000f22;  border-top:solid #0035aa;}#prompt{width:2.4; color:#0099ff;
-        }Input { background:transparent; BORDER:nONE; COLOR:#00CFFF;} Input:focus{background: transparent;
+sScreen {background:#000a1a; color:#00cfff; border:round #0044aa; padding:1 2; } #history{ 
+    background: transparent; scrollbar-color:#0055cc #000a1a; border:none; height:1fr;}#input{
+        height:3; background: #000f22;  border-top:solid #0035aa; }#prompt{width:2; color:#3299ff;
+        } 
+        Input { 
+            background:transparent; border:none; color:#00CFFF; height:1;} Input:focus {background: transparent;
     border: none;
     color:#e2e5ed;
-    }Richlog{background: transparent;color:#00cfff;}
+    } RichLog {background: transparent; border: none; padding: 1 2 ;}

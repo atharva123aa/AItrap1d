@@ -1,6 +1,6 @@
-Screen {background:#000a1a; color:#00cfff; border:round #0044aa; padding:1 2; } #history{ 
+Screen {background:#000a1a; color:#00cfff; border:heavy#0044aa; padding:1 2; } #history{ color:#00cfff;
     background: transparent; scrollbar-color:#0055cc #000a1a; border:none; height:1fr;}#input{
-        height:3; background: #000f22;  border-top:solid #0035aa; }#prompt{width:2; color:#3299ff;
+        height:2; background: #000f22;  border-top:tall #0035aa; }#prompt{width:2; color:#3af0ff;
         } 
         Input { 
             background:transparent; border:none; color:#00CFFF; height:1;} Input:focus {background: transparent;

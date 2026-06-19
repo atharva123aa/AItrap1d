@@ -2,10 +2,12 @@ from textual.app import App
 from textual.widgets import Static,Input, RichLog
 from textual.containers import Horizontal
 import random
+import time
 class AITrap1dApp(App):
 
     CSS_PATH="style.css"
     ENABLE_COMMAND_PALETTE=False
+    DEFAULT_CSS=""
     #9 56
     def on_mount(self):
         self.value=""
@@ -17,7 +19,9 @@ class AITrap1dApp(App):
         self.f_opened=0
         self.memory=0
         self.truth=False
+        self.dark= False
         self.theme_mode="default"
+        self.start_time=time.time()
         terminal=self.query_one("#history",RichLog)
         terminal.write(self.intro)
         self.query_one("#cmd",Input).focus()
@@ -28,6 +32,12 @@ class AITrap1dApp(App):
         with Horizontal(id="input"):
             yield Static (">" ,id="prompt")
             yield Input(placeholder="enter cmd...",id="cmd")
+
+    def get_time(self):
+        secs=int(time.time() -self.start_time)    
+        mins=secs//60   
+        secs=secs%60
+        return f"{mins}m {secs}s"
     def make_code(self):
         parts=["AIRL","SYS","DEV","ROOT","CORE"]
         nums = random.randint(1000,9998)
@@ -104,22 +114,15 @@ class AITrap1dApp(App):
              terminal.write("ping..ing...no..resp.onse from outsidee..[AIRL]:HEHEHE! \n")
         elif self.value=="creepy":
             if self.theme_mode=="default":
-                self.CSS_PATH="creepy.css"
-                self.theme_mode="creepy"
-                terminal.write("[AIRL]:YOU SHOULDN't have done that you cant sleep now \n")
+               self.theme_mode="creepy"
+               self.theme ="textual-dark" 
+               terminal.write("[AIRL]:YOU SHOULDN't have done that you cant sleep now \n")
             else:
-                self.CSS_PATH="style.css"
                 self.theme_mode="default"#well if some1 did not know typing creepy again change theme what will happen:{
+                self.theme="textual-light"
+                #things were bit confusing af so i gave up and finally asked it to claude 12:03  
                 terminal.write("[AIRL]:BACK TO NORMAL(FOR NOW)..HOW DID YOU FIND\n")
-
-
-        else:
-            terminal.write(f"> {self.value}")
-             # i aint lowk sure that this will be helpfuls
-        self.query_one("#cmd",Input).value=""
-        self.query_one("#cmd",Input).focus()
-
-        if self.value=="help" and self.c_level< 4:
+        elif self.value=="help" and self.c_level<4:
             terminal.write("> help")
             terminal.write("commands: scan /ls/ open/connect/solve/hint/exit \n")
         elif command=="scan" and len(value_list)!= 2 and self.c_level==1:
@@ -331,7 +334,7 @@ class AITrap1dApp(App):
 
         elif self.value=="trace"and self.c_level== 5:
             terminal.write(f"> {self.value}")
-            terminal.write("source:\nAIRL INTERNAL NETWORK\n\NO OUTSIDE GUY FOUND\n")
+            terminal.write("source:\nAIRL INTERNAL NETWORK\n\nNO OUTSIDE GUY FOUND\n")
 
         elif self.value=="truth" and self.c_level==5 and self.truth:
             terminal.write("[[FINAL ACCESS ACCEPTED]]")
@@ -342,21 +345,29 @@ class AITrap1dApp(App):
         elif self.c_level==6 and self.value in ("1","escape"):
             terminal.write("attempin' escape .\n\nsecurity increasting..\n\n[AIRL]:LEAVEING WILL ERASE YOUR COPY\n\nconnection terminated\nyou escaped AIRL\nbut some of your code stayed behind :{ \n")
 
+
             terminal.write(f"\n[[PART 2 CODE]]\nyour code: {self.make_code()}\nkeep it safe... It unlocks a different beginning in part 2 dont share it with anyone \n")
+            terminal.write(f"time taken :{self.get_time()  } \n" )
         elif self.c_level==6 and self.value in  ("2","trust airl") :
             terminal.write("[AIRL]:YOU FINALLY UNDERSTOOD \n\nAIRL WAS NEVER YOUR FOE\nIt was trying to make you his bestiee\n\nIntegrated succesfully\nyou and AIRL ARE NOW ONE SYSTEM:}\n")
             terminal.write(f"\n[[PART 2  CODE]]\n YOUR CODE:{self.make_code()}\nstoore this up. your merge affect comes what comes next in the 2nd part avoid sharing the code. \n")
+            terminal.write(f"time taken :{self.get_time()  } \n" )
 
         # 8 43
 
         elif self.c_level==6 and self.value in  ("3","shutdown"):
             terminal.write("command accepted  \n\n[AIRL]: THIS WILL ERASE EVERYTHING EVEN YOU\n\n airl core shutdowned\n    Memory lost\nsys. collapsed:} \n") 
             terminal.write(f"\n[[part 2 code]]\n your code:{self.make_code()}\neven in collapse... something survived:) btw. keep the code with you only \n")
+            terminal.write(f"time taken :{self.get_time()  } \n" )
         
        
         
         else:
             terminal.write(f"> {self.value}")
             terminal.write("unknown command,type help \n")
+        self.query_one("#cmd",Input).value=""
+        self.query_one("#cmd",Input).focus()
 
-    
+         
+if __name__ == "__main__":
+    AITrap1dApp().run()

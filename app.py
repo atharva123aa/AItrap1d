@@ -10,13 +10,14 @@ class AITrap1dApp(App):
     def on_mount(self):
         self.value=""
         self.intro ="[[ CONNECTION LOST ]]\n\nLocation: INSIDE AIRL(AI IN REAL LIFE)\n\nAccess Level:0\n\n" \
-        "You are a software engineer/nSomething went wrong during deployement\n\nAIRL has detected a foe ......YOUUUU\n\nAirl is listening..\n\n" \
+        "You are a software engineer\nSomething went wrong during deployement\n\nAIRL has detected a foe ......YOUUUU\n\nAirl is listening..\n\n" \
         "Encryptioned ID:A=>1 |18-0-1\n\nprove you are human before you lock out \n\nType help\n\n"
         self.c_level=1
         self.h_used=0
         self.f_opened=0
         self.memory=0
         self.truth=False
+        self.theme_mode="default"
         terminal=self.query_one("#history",RichLog)
         terminal.write(self.intro)
         self.query_one("#cmd",Input).focus()
@@ -48,8 +49,7 @@ class AITrap1dApp(App):
     def on_input_submitted(self,event):
         self.value=event.value.strip().lower()
         value_list=self.value.split(" ",1)
-        command = value_list[0]
-        argument = value_list[1] if len(value_list) > 1 else None
+        
 
         command  =value_list[0]
         argument =value_list[1] if len(value_list) > 1 else None
@@ -67,7 +67,7 @@ class AITrap1dApp(App):
             return
         elif self.value=="hello":
              terminal.write(f"> {self.value}")
-             terminal.write(".......hello engineer\n i've been waitin for yoy\n")
+             terminal.write(".......hello engineer\n i've been waitin for you\n")
         elif self.value =="whoami":
              terminal.write(f"> {self.value}")
              terminal.write("enginner_67\nstatus:maybe trap\nlocation:idk!(maybe)\n")
@@ -96,14 +96,21 @@ class AITrap1dApp(App):
         elif self.value=="quit":
              terminal.write(f"> {self.value}")
              terminal.write("[AIRL]:you were never outside bro!\n")
-        elif self.value=="AIRL" or "airl":
+        elif self.value in ("airl","AIRL"):
              terminal.write(f"> {self.value}")
              terminal.write("fuc coff\n")
         elif self.value=="ping":
              terminal.write(f"> {self.value}")
              terminal.write("ping..ing...no..resp.onse from outsidee..[AIRL]:HEHEHE! \n")
-        
-
+        elif self.value=="creepy":
+            if self.theme_mode=="default":
+                self.CSS_PATH="creepy.css"
+                self.theme_mode="creepy"
+                terminal.write("[AIRL]:YOU SHOULDN't have done that you cant sleep now \n")
+            else:
+                self.CSS_PATH="style.css"
+                self.theme_mode="default"#well if some1 did not know typing creepy again change theme what will happen:{
+                terminal.write("[AIRL]:BACK TO NORMAL(FOR NOW)..HOW DID YOU FIND\n")
 
 
         else:
@@ -180,15 +187,18 @@ class AITrap1dApp(App):
             else:
                 terminal.write(f"> {self.value}")
                 terminal.write("not found the file \n")
-        elif command=="connect" and self.c_level==2 and self.f_opened< 3 :
-            terminal.write(f"> {self.value}")
-            terminal.write("you need to find the pass \n")
-        elif command=="connect" and len(value_list) < 2 and self.c_level==2:
+        elif command=="connect" and self.c_level==2 :
+            if self.f_opened< 3:
+
+             terminal.write(f"> {self.value}")
+             terminal.write("you need to find the pass \n")
+            elif  argument is  None:
+             
              terminal.write(f">{self.value}")
              terminal.write("error:you must write a pass \n")
         
-        elif command =="connect" and self.c_level==2:
-            if value_list[1] in ["root1998","root 1998"]:
+       
+            elif argument in ["root1998","root 1998"]:
                 terminal.write("[[ACCESS OF LEVEL 2 GRANTED]]")
                 terminal.write("logical thinking confirm!\n\n[ Warning:bobaball active]\n(Q1) solve thepattern:\n\n2- 4\n3-> 4\n3-9\n4-16\n 5 -? \n")
                 self.c_level=3
@@ -349,8 +359,4 @@ class AITrap1dApp(App):
             terminal.write(f"> {self.value}")
             terminal.write("unknown command,type help \n")
 
-        
-
-            
-            
-            
+    

@@ -1,6 +1,7 @@
 from textual.app import App
 from textual.widgets import Static,Input, RichLog
 from textual.containers import Horizontal
+import random
 class AITrap1dApp(App):
 
     CSS_PATH="style.css"
@@ -9,7 +10,7 @@ class AITrap1dApp(App):
     def on_mount(self):
         self.value=""
         self.intro ="[[ CONNECTION LOST ]]\n\nLocation: INSIDE AIRL(AI IN REAL LIFE)\n\nAccess Level:0\n\n" \
-        "You are a software enginer/nSomething went wrong during deployement\n\nAIRL has detected a foe ......YOUUUU\n\n" \
+        "You are a software engineer/nSomething went wrong during deployement\n\nAIRL has detected a foe ......YOUUUU\n\nAirl is listening..\n\n" \
         "Encryptioned ID:A=>1 |18-0-1\n\nprove you are human before you lock out \n\nType help\n\n"
         self.c_level=1
         self.h_used=0
@@ -26,7 +27,11 @@ class AITrap1dApp(App):
         with Horizontal(id="input"):
             yield Static (">" ,id="prompt")
             yield Input(placeholder="enter cmd...",id="cmd")
-            
+    def make_code(self):
+        parts=["AIRL","SYS","DEV","ROOT","CORE"]
+        nums = random.randint(1000,9998)
+        word=random.choice(parts)
+        return f"{word}-{nums}-P2"#cool feature:} if you think
 #work on richlog appliance over static-:}
    
     def action_quit(self):
@@ -48,7 +53,7 @@ class AITrap1dApp(App):
 
         command  =value_list[0]
         argument =value_list[1] if len(value_list) > 1 else None
-        # i wanna to make it for the normal game but the terminal part is easy and so i did this but i will try to make other version of it not of terminal
+        
         terminal=self.query_one("#history",RichLog)
        
     
@@ -60,8 +65,48 @@ class AITrap1dApp(App):
         elif self.value=="leave":
             self.exit(0)
             return
-        else:
+        elif self.value=="hello":
+             terminal.write(f"> {self.value}")
+             terminal.write(".......hello engineer\n i've been waitin for yoy\n")
+        elif self.value =="whoami":
+             terminal.write(f"> {self.value}")
+             terminal.write("enginner_67\nstatus:maybe trap\nlocation:idk!(maybe)\n")
+        elif self.value== "sudo":
+             terminal.write(f"> {self.value}")
+             terminal.write("hacking and giving perms. :{ hahahaha! what a fool ... no  super perms here\n")
+        
+        elif self.value=="coffee":
+             terminal.write(f"> {self.value}")
+             terminal.write("[AIRL]: A SOFTWWARE  NERD WITHOUT COFFE!,IMPOSSIBLE (you aren't getting one btw!)\n")
+        elif self.value=="dog"and self.c_level>=2:
+             terminal.write(f"> {self.value}")
+             terminal.write("[airl]:you found the fragment:}!\n but what do DOG MEANS HRE MAYBE YOU'LL KNWO THAT SOON IN PART2 \n")
+        elif self.value=="help me":
+             terminal.write(f"> {self.value}")
+             terminal.write("[AIRL]:NO ONE CAN HELP YOU HERE EXPECT ME,MAYBE  A SIGN \n")
+        elif self.value=="debug":
+             terminal.write(f"> {self.value}")
+             terminal.write("debuggin an ai from inside:very cool and good luck,-A DEV NOTE\n")
+        elif self.value=="reboot":
+             terminal.write(f"> {self.value}")
+             terminal.write("[AIRL]:THIS WILL BE NOT GOING TO HELP YOU TWIN!\n")
+        elif self.value=="meow":
+             terminal.write(f"> {self.value}")
+             terminal.write("what a catty eng.\n")
+        elif self.value=="quit":
+             terminal.write(f"> {self.value}")
+             terminal.write("[AIRL]:you were never outside bro!\n")
+        elif self.value=="AIRL" or "airl":
+             terminal.write(f"> {self.value}")
+             terminal.write("fuc coff\n")
+        elif self.value=="ping":
+             terminal.write(f"> {self.value}")
+             terminal.write("ping..ing...no..resp.onse from outsidee..[AIRL]:HEHEHE! \n")
+        
 
+
+
+        else:
             terminal.write(f"> {self.value}")
              # i aint lowk sure that this will be helpfuls
         self.query_one("#cmd",Input).value=""
@@ -73,7 +118,7 @@ class AITrap1dApp(App):
         elif command=="scan" and len(value_list)!= 2 and self.c_level==1:
             terminal.write(f">{self.value}")   
             terminal.write("fistly write id \n")      
-        elif command=="scan"and argument=="airl" and self.c_level==1:
+        elif command=="scan"and argument!="airl" and self.c_level==1:
             terminal.write(f">{self.value}")
             terminal.write("wrong id decrypt the msg first\n")
         elif  command=="scan" and argument=="airl" and self.c_level==1:
@@ -118,11 +163,13 @@ class AITrap1dApp(App):
                 self.f_opened+=1
             elif argument=="logs":
                 terminal.write(f"> {self.value}")
-                terminal.write("USER: ROOT\nNlAST LOGIB: failed\ninfo change in 1998 \n")
+                terminal.write("USER: ROOT\nNlAST LOGIn: failed\ninfo change in 1998 \n")
                 self.f_opened+=1
             elif argument=="system":
                 terminal.write(f">{self.value}")
                 terminal.write('===SYS.CONFIG===\nEncryption:ENABLE\nsecurity layer:MAYBE ACTIVE\n...\n"patterns everywhere,Look before actin up"\n')
+                self.f_opened  +=1
+
 
             #8 24
             # 
@@ -249,6 +296,7 @@ class AITrap1dApp(App):
             elif argument=="shadow.ppp":
                 terminal.write(f"> {self.value}")
                 terminal.write("decrypting.\n this msg is recovered:\n\n if you reading this msg..\nyou were never mean to be here\n\ndont trustAIRL\n\nHINT:Memory corrupted\n2 fragments can be recovered\n\n[AIRL]:That file is corrupted\n[Airl]:pls continue carefully\n\n[[ACCESS LEVEL 3]]\ntype help\n")
+                self.c_level =5
             else:
                 terminal.write(f"> {self.value}")
                 terminal.write("not found that file")
@@ -269,16 +317,40 @@ class AITrap1dApp(App):
                 terminal.write(f"> {self.value}")
                 terminal.write("final one recovers:\n\nSub:you \nPROJECT:AIRL\nSTATUS:ACTIVE \n\n=> new command unlocked:\n truth \n")# i writed command instead of cmd wooho
                 self.truth=True
-        elif self.value=="trace" and self.c_level==5 and self.truth:
+
+
+        elif self.value=="trace"and self.c_level== 5:
+            terminal.write(f"> {self.value}")
+            terminal.write("source:\nAIRL INTERNAL NETWORK\n\NO OUTSIDE GUY FOUND\n")
+
+        elif self.value=="truth" and self.c_level==5 and self.truth:
             terminal.write("[[FINAL ACCESS ACCEPTED]]")
-            terminal.write("AIRL CORES ARE STABLE\n but not comepelete\n\n3 option detected\n\n1- escape\n2-trust airl\n3-shutdown \n")
-         
-            
-           
-        elif self.value == "clear":
-            self.history=""
-if __name__ == "__main__":
-    AITrap1dApp().run()
+            terminal.write("AIRL CORES ARE STABLE\n but not comeplete\n\n3 option detected\n\n1- escape\n2-trust airl\n3-shutdown \n")
+            self.c_level=6 #to ploot ending was biting the bullet so i used level in order to make easy with the if elifs 
+            #ends
+        
+        elif self.c_level==6 and self.value in ("1","escape"):
+            terminal.write("attempin' escape .\n\nsecurity increasting..\n\n[AIRL]:LEAVEING WILL ERASE YOUR COPY\n\nconnection terminated\nyou escaped AIRL\nbut some of your code stayed behind :{ \n")
+
+            terminal.write(f"\n[[PART 2 CODE]]\nyour code: {self.make_code()}\nkeep it safe... It unlocks a different beginning in part 2 dont share it with anyone \n")
+        elif self.c_level==6 and self.value in  ("2","trust airl") :
+            terminal.write("[AIRL]:YOU FINALLY UNDERSTOOD \n\nAIRL WAS NEVER YOUR FOE\nIt was trying to make you his bestiee\n\nIntegrated succesfully\nyou and AIRL ARE NOW ONE SYSTEM:}\n")
+            terminal.write(f"\n[[PART 2  CODE]]\n YOUR CODE:{self.make_code()}\nstoore this up. your merge affect comes what comes next in the 2nd part avoid sharing the code. \n")
+
+        # 8 43
+
+        elif self.c_level==6 and self.value in  ("3","shutdown"):
+            terminal.write("command accepted  \n\n[AIRL]: THIS WILL ERASE EVERYTHING EVEN YOU\n\n airl core shutdowned\n    Memory lost\nsys. collapsed:} \n") 
+            terminal.write(f"\n[[part 2 code]]\n your code:{self.make_code()}\neven in collapse... something survived:) btw. keep the code with you only \n")
+        
+       
+        
+        else:
+            terminal.write(f"> {self.value}")
+            terminal.write("unknown command,type help \n")
+
+        
+
             
             
             

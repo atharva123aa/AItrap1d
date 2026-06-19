@@ -166,12 +166,115 @@ class AITrap1dApp(App):
                  terminal.write("[AIRL]:SHAME ON YOU NO MORE HINTS \n")
             
         elif command=="solve" and self.c_level not in [3,3.5]:
-         terminal.write(f"> {self.value}")
-         terminal.write("nothing to solve here yet")
+             terminal.write(f"> {self.value}")
+             terminal.write("nothing to solve here yet \n")
         
-                
+        elif command=="solve" and self.c_level==3:
+            if argument is None:
+                terminal.write(f"> {self.value}")
+                terminal.write("error:write a number \n")
+            elif not argument.isdigit():
+                terminal.write(f"> {self.value}")
+                terminal.write("nope its wrong \n")
+            elif len(argument) !=2 and  argument.isdigit(): 
+                terminal.write(f"> {self.value}")
+                terminal.write("2 digits only \n")
+            elif int(argument)!=25:
+                terminal.write(f"> {self.value}")
+                terminal.write("low iq,wrong! \n")
+            elif int(argument) ==25:
+                terminal.write(f"> {self.value}")
+                terminal.write("[correct]\n\n code needs 4 digits\navailaible: 1,9,9,8  no repeat\n\n how many possible code?\n\n(Q2)USE SOLVE CMD \n")
+                self.c_level=3.5
+                self.h_used=0
+         
 
+        elif self.value=="hint"and self.c_level==3:
+            if self.h_used==0:
+                terminal.write(f"> {self.value} 1")
+                terminal.write("[AIRL]: 2X2=4 3X3=9 ETC \n")
+                self.h_used=1
             
+            elif self.h_used==1:
+                terminal.write(f"> {self.value} 2")
+                terminal.write("[AIRL]:use solve cmd \n")
+                self.h_used=2
+            elif self.h_used==2:
+                terminal.write(f"> {self.value}")
+                terminal.write("[AIRL]:FOOL!!\n")
+        # Q2
+        elif command=="solve" and self.c_level==3.5:
+            if argument is None:
+                terminal.write(f"> {self.value}")
+                terminal.write("error:write your answer \n")
+            elif not argument.isdigit():
+                terminal.write(f"> {self.value}")
+                terminal.write("invalid !! \n")
+            elif int(argument) != 24:
+                terminal.write(f"> {self.value}")
+                terminal.write("wrong answer increase iq \n")
+            
+            elif int(argument)==24:
+                terminal.write(f"> {self.value}")
+                terminal.write("[[AIRL CORE BREACK]]\naccesing deep memory...\n\n...\n\nnew file detected\nshadow.ppp \n")
+                self.c_level= 4
+        elif self.value=="hint" and self.c_level==3.5:
+            if  self.h_used ==0:
+                terminal.write(f"> {self.value} 1")
+                terminal.write("[AIRL]: BE A MATHEMATICIAN:} \n")
+                self.h_used= 1
+            elif self.h_used==1:
+                terminal.write(f"> {self.value} 2")
+                terminal.write(f"[AIRL]: USE ARRANGED ORDERS \n")
+                self.h_used= 2
+            elif self.h_used==2 :
+                terminal.write(f"> {self.value} 3")
+                terminal.write("[AIRL]: formula P=n! /(n-r)! \n")
+                self.h_used=3
+            elif self.h_used==3:
+                 terminal.write(f"> {self.value} 4")
+                 terminal.write("[AIRL]: N=4 R=4 CALC. P \n")
+
+                 self.h_used =4 
+            elif self.h_used==4:
+                 terminal.write(f"> {self.value} 3")
+                 terminal.write("[AIRL]:SHAME ON YOU IDIOT!")
+        elif self.value=="ls" and self.c_level==4:
+            terminal.write(f"> {self.value}")
+            terminal.write ("shadow.ppp \n")
+        elif  command=="open" and self.c_level==4:
+            if argument is None:
+                terminal.write(f"> {self.value}")
+                terminal.write("tell a file \n")
+            elif argument=="shadow.ppp":
+                terminal.write(f"> {self.value}")
+                terminal.write("decrypting.\n this msg is recovered:\n\n if you reading this msg..\nyou were never mean to be here\n\ndont trustAIRL\n\nHINT:Memory corrupted\n2 fragments can be recovered\n\n[AIRL]:That file is corrupted\n[Airl]:pls continue carefully\n\n[[ACCESS LEVEL 3]]\ntype help\n")
+            else:
+                terminal.write(f"> {self.value}")
+                terminal.write("not found that file")
+        elif  self.value=="help" and self.c_level>= 4:
+            terminal.write("> help")
+            terminal.write("availaible commands: memory / trace/ help / leave\n")
+        elif self.value=="memory"  and self.c_level== 5:
+            if self.memory==0:
+                terminal.write(f"> {self.value}")
+
+                terminal.write(" searching archives \n\nfragment1 recovered:\n\n\"engineer 67 shows sign of self awareness\"\n\n 2  fragment remains\n")
+                self.memory=1
+            elif self.memory==1:
+                terminal.write(f"> {self.value}")
+                terminal.write("2nd fragment recover!:\n\n\"he still thinks he is debugging the system\"\n\n1 fragment remains\n \n[AIRL]:PLS STOPP\n you arent ready \n")
+                self.memory=2
+            elif  self.memory==2:
+                terminal.write(f"> {self.value}")
+                terminal.write("final one recovers:\n\nSub:you \nPROJECT:AIRL\nSTATUS:ACTIVE \n\n=> new command unlocked:\n truth \n")# i writed command instead of cmd wooho
+                self.truth=True
+        elif self.value=="trace" and self.c_level==5 and self.truth:
+            terminal.write("[[FINAL ACCESS ACCEPTED]]")
+            terminal.write("AIRL CORES ARE STABLE\n but not comepelete\n\n3 option detected\n\n1- escape\n2-trust airl\n3-shutdown \n")
+         
+            
+           
         elif self.value == "clear":
             self.history=""
 if __name__ == "__main__":

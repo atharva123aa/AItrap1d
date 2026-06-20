@@ -115,13 +115,15 @@ class AITrap1dApp(App):
         elif self.value=="creepy":
             if self.theme_mode=="default":
                self.theme_mode="creepy"
-               self.theme ="textual-dark" 
+               self.add_class("-theme-dark")
                terminal.write("[AIRL]:YOU SHOULDN't have done that you cant sleep now \n")
             else:
                 self.theme_mode="default"#well if some1 did not know typing creepy again change theme what will happen:{
-                self.theme="textual-light"
+                self.remove_class("-theme-dark")
                 #things were bit confusing af so i gave up and finally asked it to claude 12:03  
                 terminal.write("[AIRL]:BACK TO NORMAL(FOR NOW)..HOW DID YOU FIND\n")
+            inp=self.query_one("#cmd",Input)
+            inp.focus()
         elif self.value=="help" and self.c_level<4:
             terminal.write("> help")
             terminal.write("commands: scan /ls/ open/connect/solve/hint/exit \n")

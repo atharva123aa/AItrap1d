@@ -8,9 +8,9 @@ Screen {background:#000a1a; color:#00cfff; border:tall #0044aa; padding:1 2; } #
     color:#e2e5ed;
     } RichLog {background: transparent; border: none; padding: 1 2 ;}
 
-App.-theme-dark Screen {background:#0a0002; color:#cc0000; border:heavy#880000; padding:1 3; } App.-theme-dark #history{ color:#cc0000;
+App.-theme-dark Screen {background:#0a0002; color:#cc0000; border:heavy #880000; padding:1 3; } App.-theme-dark #history{ color:#cc0000;
     background: transparent; scrollbar-color:#880000 #0a0002; border:none; height:1fr;} App.-theme-dark #input{
-        height:1; background: #130002;  border-top:tall #aa0000; }App.-theme-dark #prompt{width:2; color:#ff0000;
+        height:2; background: #130002;  border-top:tall #aa0000; } App.-theme-dark #prompt{width:2; color:#ff0000;
         } 
        App.-theme-dark Input { 
             background:transparent; border:none; color:#Cc0000; height:1;}App.-theme-dark Input:focus {background: transparent;

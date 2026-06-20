@@ -1,3 +1,4 @@
+
 # AItrap1d
 It is  a game you can play in the terminal and it follows a command based solving  method to progress up in the story.It has basic things like levels,hints and other cool options.
 
@@ -36,7 +37,12 @@ WATCH THIS VIDEO FOR UNDERSTANDING FEATURES MORE DEEPLY
 
 ## RUN
 
-1.DOWNLOAD THE RELEASE FILE OR JUST CLONE THE REPO
+1.DOWNLOAD THE RELEASE FILE AND OPEN IN TERMINAL JUST IT
+
+
+                       OR
+
+1.DOWNLOAD OR CLONE REPO
 
 
 2.MAKE SURE YOU HAVE TEXTUAL-8.2.7 INSTALLED OR YOU CAN FACE CSS  ISSUE 

@@ -1,8 +1,1 @@
-Screen {background:#0a0002; color:#cc0000; border:heavy#880000; padding:1 3; } #history{ color:#cc0000;
-    background: transparent; scrollbar-color:#880000 #0a0002; border:none; height:1fr;}#input{
-        height:1; background: #130002;  border-top:tall #aa0000;; }#prompt{width:2; color:#ff0000;
-        } 
-        Input { 
-            background:transparent; border:none; color:#Cc0000; height:1;} Input:focus {background: transparent;
-    border: none;color:#ffcccc;
-    } RichLog {background: transparent; border: none; padding: 1 2 ;}
+
